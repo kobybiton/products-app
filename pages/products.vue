@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-5">
     <FilterBar :search.sync="search" :category.sync="category" :sort.sync="sort" />
     <ProductGrid :products="products" @edit="edit" />
     <ProductEdit v-if="product" :product="product" :editing.sync="editing" />
