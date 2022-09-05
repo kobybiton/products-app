@@ -22,6 +22,7 @@ export default {
   },
   computed: {
     category() {
+      // compute category name by product categoryId
       return this.$store.state.categories[this.product.categoryId].name;
     }
   }

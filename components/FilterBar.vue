@@ -39,6 +39,7 @@ export default {
   },
   computed: {
     categoryOptions() {
+      // map categories to create object with the requested value-text keys for b-form-select
       return [{ value: 0, text: "All" }, ...Object.values(this.$store.state.categories).map(c => ({ value: c.id, text: c.name }))];
     }
   }

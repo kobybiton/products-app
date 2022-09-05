@@ -35,6 +35,7 @@
 export default {
   name: "ProductEdit",
   data: () => ({
+    // create local name to update modal title only after modifying
     name: null
   }),
   props: {
@@ -54,9 +55,11 @@ export default {
       return Object.values(this.$store.state.categories).map(c => ({ value: c.id, text: c.name }));
     },
     nameValid() {
+      // check if exist and length
       return this.product.name?.length > 0;
     },
     priceValid() {
+      // ensure number value over 0
       return !isNaN(this.product.price) && parseInt(this.product.price) >= 0;
     },
     valid() {
@@ -64,11 +67,13 @@ export default {
     }
   },
   watch: {
+    // update modal title
     product(product) {
       this.name = this.$store.state.products[product.id].name;
     }
   },
   methods: {
+    // commit mutations
     remove() {
       this.$store.commit('remove', this.product.id);
       this.open = false;
@@ -79,6 +84,7 @@ export default {
     }
   },
   mounted() {
+    // create modal title
     this.name = this.$store.state.products[this.product.id].name;
   }
 }

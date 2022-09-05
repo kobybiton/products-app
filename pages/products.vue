@@ -17,17 +17,18 @@ export default {
     sort: "name"
   }),
   computed: {
+    // compute products when component is re-rendered
     products() {
       let products = Object.values(this.$store.state.products);
-
+      // filter products by category
       if (this.category) {
         products = products.filter(p => p.categoryId == this.category);
       }
-
+      // filter products by search type
       if (this.search?.length) {
         products = products.filter(p => p.name.toLowerCase().includes(this.search.toLowerCase()));
       }
-
+      // sort products by sort value
       switch (this.sort) {
         case "name":
           products.sort((a, b) => a.name.localeCompare(b.name));
@@ -45,6 +46,7 @@ export default {
   },
   methods: {
     edit(id) {
+      // duplicate product to avoid mutating directly
       this.product = { ...this.$store.state.products[id] };
       this.editing = true;
     }
