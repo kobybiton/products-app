@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-form-row>
+    <b-form-row class="form-wrapper">
       <b-col>
         <b-form-row>
           <b-col>
@@ -45,3 +45,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media screen and (max-width: 600px) {
+  .form-wrapper {
+    display: block;
+  }
+}
+</style>
